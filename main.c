@@ -1,3 +1,7 @@
+/*
+Made By Rein van der Linden / Sam Knoors - 2019
+based on https://stackoverflow.com/questions/39823509/inverting-colors-of-pixels-in-a-bmp-file-in-c?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
