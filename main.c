@@ -30,9 +30,9 @@ int main()
         unsigned int ImportantColors;
     };
     struct COLOURS {
-        unsigned char blue;
-        unsigned char vert;
-        unsigned char rouge;
+        unsigned char BLUE;
+        unsigned char GREEN;
+        unsigned char RED;
     };
     struct BMP bmp;
     struct HEADER header;
@@ -75,8 +75,8 @@ int main()
 
        if (bmp.FileType[0] != 'B' && bmp.FileType[1] != 'M')
             {
-                printf("C'est ci n'est pas une vrai BMP file.");
-                exit(-1);
+                printf("The file might not have the correct name or it might not be a BMP file. Please Check this!");
+                return (0);
             }
 
         int xPos = 0;
@@ -85,28 +85,28 @@ int main()
                 int yPos = 0;
                 while( yPos < header.Height )
                     {
-                        //Inverting Blue
-                            fread(&colour.blue, 1, 1, openFile);
-                            unsigned int BLUE = colour.blue;
+                        //Inverting BLUE
+                            fread(&colour.BLUE, 1, 1, openFile);
+                            unsigned int BLUE = colour.BLUE;
                             BLUE = 255 - BLUE;
-                            colour.blue = (char) BLUE;
+                            colour.BLUE = (char) BLUE;
 
-                        //Inverting vert
-                            fread(&colour.vert, 1, 1, openFile);
-                            unsigned int vert = colour.vert;
-                            vert = 255 - vert;
-                            colour.vert = (char) vert;
+                        //Inverting GREEN
+                            fread(&colour.GREEN, 1, 1, openFile);
+                            unsigned int GREEN = colour.GREEN;
+                            GREEN = 255 - GREEN;
+                            colour.GREEN = (char) GREEN;
 
-                        //Inverting rouge
-                            fread(&colour.rouge, 1, 1, openFile);
-                            unsigned int rouge = colour.rouge;
-                            rouge = 255 - rouge;
-                            colour.rouge = (char) rouge;
+                        //Inverting RED
+                            fread(&colour.RED, 1, 1, openFile);
+                            unsigned int RED = colour.RED;
+                            RED = 255 - RED;
+                            colour.RED = (char) RED;
 
                         // Write pixels to invFile
-                            fwrite(&colour.blue, 1, 1, invFile);
-                            fwrite(&colour.vert, 1, 1, invFile);
-                            fwrite(&colour.rouge, 1, 1, invFile);
+                            fwrite(&colour.BLUE, 1, 1, invFile);
+                            fwrite(&colour.GREEN, 1, 1, invFile);
+                            fwrite(&colour.RED, 1, 1, invFile);
 
                     yPos++;
                     }
@@ -116,7 +116,7 @@ int main()
         fclose(openFile);
         fclose(invFile);
 
-        printf("le file inverted!\n");
+        printf("The BMP file has been inverted!\n");
         return (0);
 
       }
